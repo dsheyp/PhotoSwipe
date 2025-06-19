@@ -452,24 +452,27 @@ class PhotoSwipe extends PhotoSwipeBase {
    * Change the slide
    * @param {number} index New index
    */
-  goTo(index) {
-    this.mainScroll.moveIndexBy(
-      this.getLoopedIndex(index) - this.potentialIndex
-    );
+  goTo(index, animate = false) {
+    index = this.getLoopedIndex(index)
+    const indexChanged = this.mainScroll.moveIndexBy(index - this.potentialIndex, animate)
+  
+    if (indexChanged) {
+      this.dispatch('afterGoto')
+    }
   }
 
   /**
    * Go to the next slide.
    */
   next() {
-    this.goTo(this.potentialIndex + 1);
+    this.goTo(this.potentialIndex + 1, true);
   }
-
+  
   /**
    * Go to the previous slide.
    */
   prev() {
-    this.goTo(this.potentialIndex - 1);
+    this.goTo(this.potentialIndex - 1, true);
   }
 
   /**
