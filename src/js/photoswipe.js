@@ -453,7 +453,9 @@ class PhotoSwipe extends PhotoSwipeBase {
    * @param {number} index New index
    */
   goTo(index, animate = false) {
-    this.mainScroll.moveIndexBy(this.getLoopedIndex(index) - this.potentialIndex);
+    this.mainScroll.moveIndexBy(
+      this.getLoopedIndex(index) - this.potentialIndex, animate
+    )
   }
 
   /**
