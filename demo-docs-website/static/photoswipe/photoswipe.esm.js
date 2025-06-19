@@ -1,6 +1,6 @@
 /*!
   * PhotoSwipe 5.4.4 - https://photoswipe.com
-  * (c) 2024 Dmytro Semenov
+  * (c) 2025 Dmytro Semenov
   */
 /** @typedef {import('../photoswipe.js').Point} Point */
 
@@ -6359,7 +6359,7 @@ class Opener {
  * Transition duration in milliseconds, can be 0.
  *
  * @prop {string} easing
- * String, 'cubic-bezier(.4,0,.22,1)'. CSS easing function for open/close/zoom transitions.
+ * String, 'cubic-bezier(.42, 0, .58, 1)'. CSS easing function for open/close/zoom transitions.
  *
  * @prop {boolean} escKey
  * Esc key to close.
@@ -6503,7 +6503,7 @@ const defaultOptions = {
   index: 0,
   errorMsg: 'The image cannot be loaded',
   preload: [1, 2],
-  easing: 'cubic-bezier(.4,0,.22,1)'
+  easing: 'cubic-bezier(.42, 0, .58, 1)'
 };
 /**
  * PhotoSwipe Core
@@ -6717,8 +6717,8 @@ class PhotoSwipe extends PhotoSwipeBase {
    */
 
 
-  goTo(index) {
-    this.mainScroll.moveIndexBy(this.getLoopedIndex(index) - this.potentialIndex);
+  goTo(index, animate = false) {
+    this.mainScroll.moveIndexBy(this.getLoopedIndex(index) - this.potentialIndex, animate);
   }
   /**
    * Go to the next slide.
@@ -6726,7 +6726,7 @@ class PhotoSwipe extends PhotoSwipeBase {
 
 
   next() {
-    this.goTo(this.potentialIndex + 1);
+    this.goTo(this.potentialIndex + 1, true);
   }
   /**
    * Go to the previous slide.
@@ -6734,7 +6734,7 @@ class PhotoSwipe extends PhotoSwipeBase {
 
 
   prev() {
-    this.goTo(this.potentialIndex - 1);
+    this.goTo(this.potentialIndex - 1, true);
   }
   /**
    * @see slide/slide.js zoomTo

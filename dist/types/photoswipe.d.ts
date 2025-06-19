@@ -107,7 +107,7 @@ export type PreparedPhotoSwipeOptions = {
      */
     zoomAnimationDuration: number | false;
     /**
-     * String, 'cubic-bezier(.4,0,.22,1)'. CSS easing function for open/close/zoom transitions.
+     * String, 'cubic-bezier(.42, 0, .58, 1)'. CSS easing function for open/close/zoom transitions.
      */
     easing: string;
     /**
@@ -314,7 +314,7 @@ declare class PhotoSwipe extends PhotoSwipeBase {
      * Change the slide
      * @param {number} index New index
      */
-    goTo(index: number): void;
+    goTo(index: number, animate?: boolean): void;
     /**
      * Go to the next slide.
      */
