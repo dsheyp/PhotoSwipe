@@ -106,7 +106,7 @@ import ContentLoader from './slide/loader.js';
  * Transition duration in milliseconds, can be 0.
  *
  * @prop {string} easing
- * String, 'cubic-bezier(.4,0,.22,1)'. CSS easing function for open/close/zoom transitions.
+ * String, 'cubic-bezier(.42, 0, .58, 1)'. CSS easing function for open/close/zoom transitions.
  *
  * @prop {boolean} escKey
  * Esc key to close.
@@ -250,7 +250,7 @@ const defaultOptions = {
   index: 0,
   errorMsg: 'The image cannot be loaded',
   preload: [1, 2],
-  easing: 'cubic-bezier(.4,0,.22,1)'
+  easing: 'cubic-bezier(.42, 0, .58, 1)'
 };
 
 /**
@@ -453,12 +453,7 @@ class PhotoSwipe extends PhotoSwipeBase {
    * @param {number} index New index
    */
   goTo(index, animate = false) {
-    index = this.getLoopedIndex(index)
-    const indexChanged = this.mainScroll.moveIndexBy(index - this.potentialIndex, animate)
-  
-    if (indexChanged) {
-      this.dispatch('afterGoto')
-    }
+    this.mainScroll.moveIndexBy(index - this.potentialIndex, animate)
   }
 
   /**
